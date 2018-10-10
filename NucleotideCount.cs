@@ -3,20 +3,19 @@ using System.Collections.Generic;
 
 public class NucleotideCount
 {
-    private Dictionary<char, int> nucleotides;
-    public NucleotideCount(string sequence)
+    private readonly Dictionary<char, int> nucleotides = new Dictionary<char, int>
     {
-        nucleotides = new Dictionary<char, int>()
-        {
             ['A'] = 0,
             ['C'] = 0,
             ['G'] = 0,
             ['T'] = 0
-        };
+    };
+    public NucleotideCount(string sequence)
+    {        
         foreach(char nucleotide in sequence)
         {
             if (nucleotides.ContainsKey(nucleotide))
-                nucleotides[nucleotide] += 1;
+                nucleotides[nucleotide]++;
             else
                 throw new ArgumentException();
         }
